@@ -6,11 +6,13 @@ This project is a fast and efficient batch ETL (Extract, Transform, Load) pipeli
 
 ## Features
 
-- **High Performance**: Optimized for fast data processing and minimal latency.
-- **Scalability**: Easily handles increasing volumes of data.
-- **Modular Design**: Easy to extend and customize.
+- **High Performance**: Optimized for fast data processing and minimal latency using Apache Spark.
+- **Scalability**: Easily handles increasing volumes of data with distributed processing.
+- **Modular Design**: Easy to extend and customize with a plug-and-play architecture.
+- **Data Transformation**: Utilizes dbt (Data Build Tool) for transforming data.
 - **Error Handling**: Robust mechanisms to handle and log errors.
-- **Configurable**: Simple configuration for different data sources and targets.
+- **Configurable**: Simple configuration for different data sources and targets using YAML.
+- **Data Storage**: Supports multiple destinations including AWS S3, Google BigQuery, and relational databases.
 
 ## Installation
 
@@ -47,8 +49,9 @@ sources:
     password: your-password
 
 transformations:
-  - type: clean_data
-  - type: aggregate
+  - type: dbt
+    project_dir: path/to/dbt/project
+    profiles_dir: path/to/dbt/profiles
 
 destinations:
   - type: s3
